@@ -2,11 +2,17 @@
 
 namespace Smartwyre.DeveloperTest.Data;
 
-public class ProductDataStore
+public class ProductDataStore : IProductDataStore
 {
     public Product GetProduct(string productIdentifier)
     {
-        // Access database to retrieve account, code removed for brevity 
-        return new Product();
+        return new Product
+        {
+            SupportedIncentives = SupportedIncentiveType.FixedCashAmount | 
+                                  SupportedIncentiveType.FixedRateRebate | 
+                                  SupportedIncentiveType.AmountPerUom |
+                                  SupportedIncentiveType.PercentageOff,
+            Price = 50.00m
+        };
     }
 }
